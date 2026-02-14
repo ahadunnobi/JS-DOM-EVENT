@@ -6,6 +6,19 @@
     <title>JS DOM AND EVENT</title>
 </head>
 <body>
-    
+    <button id="myBtn">Click Me</button>
+<h1 id="header">Old Title</h1>
+
+<script>
+  const btn = document.getElementById("myBtn");
+  const head = document.getElementById("header");
+
+  // Adding an Event Listener to react to a click
+  btn.addEventListener("click", function() {
+    // Changing CSS style and text content
+    head.innerHTML = "New Title!";
+    head.style.color = "blue";
+  });
+</script>
 </body>
 </html>

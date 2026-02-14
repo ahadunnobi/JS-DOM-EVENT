@@ -1,47 +1,181 @@
-# HTML DOM (Document Object Model)
+# HTML DOM & JavaScript – Compact Notes
 
-The **HTML DOM** is an Object Model and programming interface for HTML documents. When a web page loads, the browser creates a tree-like representation of the document.
+## 🌳 HTML DOM (Document Object Model)
 
+The **HTML DOM** is a tree-like structure created by the browser when a page loads.
+It represents the document so JavaScript can interact with it.
 
+### 🔹 DOM Nodes
 
-## DOM Nodes
-Every part of the document is a **Node** in this tree:
-* **Document:** The owner of all nodes (the root).
-* **Elements:** HTML tags (e.g., `<html>`, `<body>`, `<h1>`, `<a>`).
-* **Attributes:** Properties of tags (e.g., `href`, `id`).
-* **Text:** The actual text inside an element.
+Every part of the page is a **node**:
 
-## The DOM API
-The DOM API allows JavaScript to interact with HTML elements through the `document` object. 
-* **Method (Action):** Something you *do* to an element (e.g., `getElementById()`).
-* **Property (Value):** Something you *get or set* on an element (e.g., `innerHTML`).
+* **Document** → Root node (owner of all nodes)
+* **Elements** → HTML tags (`<body>`, `<p>`, `<a>`)
+* **Attributes** → Tag properties (`id`, `href`, `class`)
+* **Text** → Content inside elements
 
-### What you can do with the API:
-* Find and select elements.
-* Change element content, attributes, and CSS styles.
-* Add, remove, or modify elements.
-* Add event listeners to react to user input.
+---
 
-## Selecting HTML Elements
-To manipulate HTML, you must first select the element using the `document` object:
+## 🔹 DOM API (Using `document`)
 
-| Method | Description |
-| :--- | :--- |
-| `document.getElementById(id)` | Finds a single element by its unique `id`. |
-| `document.getElementsByTagName(name)` | Finds elements by their tag name. |
-| `document.getElementsByClassName(name)` | Finds elements by their class name. |
-| `document.querySelector(selector)` | Finds the **first** element that matches a CSS selector. |
-| `document.querySelectorAll(selector)` | Finds **all** elements that match a CSS selector. |
+JavaScript interacts with the DOM through the `document` object.
 
-## Quick Example
+### ✔ Method vs Property
+
+* **Method** → action
+  `document.getElementById()`
+* **Property** → value
+  `element.innerHTML`
+
+### ✔ What You Can Do
+
+* Select elements
+* Change content & attributes
+* Modify CSS styles
+* Add/remove elements
+* Handle user events
+
+---
+
+## 📌 Selecting HTML Elements
+
+| Method                     | Use                        |
+| -------------------------- | -------------------------- |
+| `getElementById()`         | One element by ID          |
+| `getElementsByClassName()` | Elements by class          |
+| `getElementsByTagName()`   | Elements by tag            |
+| `querySelector()`          | First match (CSS selector) |
+| `querySelectorAll()`       | All matches                |
+
+---
+
+## 📌 Quick Example
 
 ```html
 <p id="demo"></p>
 
 <script>
-  // 1. Method: Find the element using the document object
-  const myPara = document.getElementById("demo");
-
-  // 2. Property: Change the content of the element
-  myPara.innerHTML = "Hello World!";
+const myPara = document.getElementById("demo");
+myPara.innerHTML = "Hello World!";
 </script>
+```
+
+---
+
+# 🔎 Finding HTML Elements (Detailed)
+
+### By ID
+
+```js
+const el = document.getElementById("intro");
+```
+
+### By Tag
+
+```js
+const els = document.getElementsByTagName("p");
+```
+
+### By Class
+
+```js
+const els = document.getElementsByClassName("intro");
+```
+
+### By CSS Selector
+
+```js
+const el = document.querySelector(".demo");      // first
+const els = document.querySelectorAll("p.intro"); // all
+```
+
+---
+
+# ✏️ Manipulating Elements
+
+## Change Content
+
+```js
+document.getElementById("p1").innerHTML = "New text!";
+```
+
+## Change Attribute
+
+```js
+document.getElementById("myImage").src = "image.jpg";
+```
+
+## Dynamic Content
+
+```js
+document.getElementById("demo").innerHTML = "Date: " + Date();
+```
+
+---
+
+# ➕ Adding & Removing Nodes
+
+## Create & Append
+
+```js
+const newP = document.createElement("p");
+newP.innerHTML = "New paragraph";
+document.body.appendChild(newP);
+```
+
+## Insert Before
+
+```js
+parent.insertBefore(newNode, existingNode);
+```
+
+## Remove Element
+
+```js
+element.remove();
+```
+
+---
+
+# ⚠️ document.write()
+
+```js
+document.write("Hello");
+```
+
+❌ Avoid after page loads — it overwrites the document.
+
+---
+
+# ⚠️ Common Mistakes
+
+* Using `#` in `getElementById()`
+* Accessing elements before DOM loads
+* Forgetting quotes around IDs
+* Expecting `querySelector()` to return multiple elements
+
+---
+
+# ✅ Quick Reference
+
+| Task             | Method                     |
+| ---------------- | -------------------------- |
+| Find by ID       | `getElementById()`         |
+| Find by class    | `getElementsByClassName()` |
+| Find by tag      | `getElementsByTagName()`   |
+| CSS selector     | `querySelector()`          |
+| Change content   | `innerHTML`                |
+| Change attribute | `.attribute = value`       |
+| Create element   | `createElement()`          |
+| Remove element   | `.remove()`                |
+
+---
+
+## 🧠 Rule of Thumb
+
+* Use **ID** → single element
+* Use **querySelector** → flexible selection
+* Use **innerHTML** → change content
+* Avoid **document.write()**
+
+---
