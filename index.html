@@ -1,24 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JS DOM AND EVENT</title>
+  <meta charset="UTF-8">
+  <title>DOM Node Concepts</title>
+  <style>
+    .box { border: 2px solid black; padding: 10px; margin: 10px; }
+  </style>
 </head>
 <body>
-    <button id="myBtn">Click Me</button>
-<h1 id="header">Old Title</h1>
 
-<script>
-  const btn = document.getElementById("myBtn");
-  const head = document.getElementById("header");
+  <div id="parent" class="box">
+    <h2 id="title">Hello DOM</h2>
+    <p id="para">This is a paragraph</p>
+  </div>
 
-  // Adding an Event Listener to react to a click
-  btn.addEventListener("click", function() {
-    // Changing CSS style and text content
-    head.innerHTML = "New Title!";
-    head.style.color = "blue";
-  });
-</script>
+  <button id="btn">Run Node Demo</button>
+
+  <script>
+    const btn = document.getElementById("btn");
+
+    btn.addEventListener("click", function () {
+
+      const parent = document.getElementById("parent");
+      const title = document.getElementById("title");
+      const para = document.getElementById("para");
+
+      // =============================
+      // 1. NODE TYPES & VALUES
+      // =============================
+      console.log("Node Name:", title.nodeName);     // H2
+      console.log("Node Type:", title.nodeType);     // 1 = Element
+      console.log("Text Value:", title.firstChild.nodeValue);
+
+      // =============================
+      // 2. DOM TREE NAVIGATION
+      // =============================
+      console.log("Parent Node:", title.parentNode.id);
+      console.log("First Child of parent:", parent.firstElementChild.id);
+      console.log("Last Child of parent:", parent.lastElementChild.id);
+      console.log("Next Sibling:", title.nextElementSibling.id);
+      console.log("Previous Sibling:", para.previousElementSibling.id);
+
+      // =============================
+      // 3. CHILD NODES LIST
+      // =============================
+      console.log("All child nodes:");
+      parent.childNodes.forEach(node => {
+        console.log(node.nodeName);
+      });
+
+      // =============================
+      // 4. TEXT NODE MANIPULATION
+      // =============================
+      para.firstChild.nodeValue = "Text node updated!";
+
+      // =============================
+      // 5. ATTRIBUTE NODE ACCESS
+      // =============================
+      console.log("Class attribute:", parent.getAttribute("class"));
+      parent.setAttribute("class", "box highlight");
+
+      // =============================
+      // 6. CREATE & APPEND NODE
+      // =============================
+      const newNode = document.createElement("p");
+      newNode.textContent = "New child added";
+      parent.appendChild(newNode);
+
+      // =============================
+      // 7. INSERT BEFORE
+      // =============================
+      const inserted = document.createElement("p");
+      inserted.textContent = "Inserted before paragraph";
+      parent.insertBefore(inserted, para);
+
+      // =============================
+      // 8. CLONE NODE
+      // =============================
+      const clone = para.cloneNode(true);
+      clone.textContent = "I am a cloned paragraph";
+      parent.appendChild(clone);
+
+      // =============================
+      // 9. REPLACE NODE
+      // =============================
+      const replacement = document.createElement("h3");
+      replacement.textContent = "Paragraph replaced!";
+      parent.replaceChild(replacement, para);
+
+      // =============================
+      // 10. REMOVE NODE
+      // =============================
+      setTimeout(() => {
+        replacement.remove();
+      }, 2000);
+
+    });
+  </script>
+
 </body>
 </html>
