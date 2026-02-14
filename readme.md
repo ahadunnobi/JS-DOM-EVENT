@@ -311,3 +311,204 @@ function frame() {
 * Combine HTML5 validation + JS for best results.
 
 ---
+# HTML DOM Reference (Document & Element)
+
+## 📘 Document Object — Key Properties & Methods
+
+### 🔹 Core Accessors
+
+| Name              | Description                  |
+| ----------------- | ---------------------------- |
+| `activeElement`   | Currently focused element    |
+| `body`            | Returns `<body>` element     |
+| `head`            | Returns `<head>` element     |
+| `documentElement` | Returns `<html>` root        |
+| `title`           | Get/set document title       |
+| `URL`             | Full page URL                |
+| `domain`          | Domain name                  |
+| `referrer`        | URL that linked to this page |
+| `lastModified`    | Last modified date           |
+| `readyState`      | Loading state                |
+
+---
+
+### 🔹 Element Collections
+
+| Name      | Returns                        |
+| --------- | ------------------------------ |
+| `forms`   | All `<form>` elements          |
+| `images`  | All `<img>` elements           |
+| `links`   | All `<a>` & `<area>` with href |
+| `scripts` | All `<script>` elements        |
+| `embeds`  | All `<embed>` elements         |
+
+---
+
+### 🔹 Node Creation
+
+| Method                     | Purpose             |
+| -------------------------- | ------------------- |
+| `createElement()`          | Create element node |
+| `createTextNode()`         | Create text node    |
+| `createComment()`          | Create comment      |
+| `createAttribute()`        | Create attribute    |
+| `createDocumentFragment()` | Create fragment     |
+
+---
+
+### 🔹 DOM Search Methods
+
+| Method                     | Description     |
+| -------------------------- | --------------- |
+| `getElementById()`         | Find by ID      |
+| `getElementsByClassName()` | Find by class   |
+| `getElementsByTagName()`   | Find by tag     |
+| `getElementsByName()`      | Find by name    |
+| `querySelector()`          | First CSS match |
+| `querySelectorAll()`       | All CSS matches |
+
+---
+
+### 🔹 Document Events
+
+| Method                  | Purpose      |
+| ----------------------- | ------------ |
+| `addEventListener()`    | Attach event |
+| `removeEventListener()` | Remove event |
+| `hasFocus()`            | Check focus  |
+
+---
+
+### 🔹 Output Stream
+
+| Method      | Description        |
+| ----------- | ------------------ |
+| `open()`    | Open output stream |
+| `close()`   | Close stream       |
+| `write()`   | Write HTML         |
+| `writeln()` | Write with newline |
+
+---
+
+## 📗 Element Object — Key Properties & Methods
+
+### 🔹 Element Navigation
+
+| Property                 | Description          |
+| ------------------------ | -------------------- |
+| `parentElement`          | Parent element       |
+| `children`               | Child elements       |
+| `childNodes`             | All child nodes      |
+| `firstElementChild`      | First child element  |
+| `lastElementChild`       | Last child element   |
+| `nextElementSibling`     | Next sibling element |
+| `previousElementSibling` | Previous sibling     |
+
+---
+
+### 🔹 Content & Attributes
+
+| Property/Method     | Description       |
+| ------------------- | ----------------- |
+| `innerHTML`         | HTML content      |
+| `textContent`       | Text content      |
+| `innerText`         | Visible text      |
+| `outerHTML`         | Element + content |
+| `getAttribute()`    | Get attribute     |
+| `setAttribute()`    | Set attribute     |
+| `removeAttribute()` | Remove attribute  |
+| `attributes`        | Attribute list    |
+
+---
+
+### 🔹 Class & Styling
+
+| Property    | Description      |
+| ----------- | ---------------- |
+| `className` | Class string     |
+| `classList` | Class operations |
+| `style`     | Inline styles    |
+
+---
+
+### 🔹 DOM Modification
+
+| Method                 | Purpose             |
+| ---------------------- | ------------------- |
+| `append()`             | Add nodes           |
+| `appendChild()`        | Add child node      |
+| `before()` / `after()` | Insert relative     |
+| `insertBefore()`       | Insert before child |
+| `replaceChild()`       | Replace child       |
+| `remove()`             | Remove element      |
+| `removeChild()`        | Remove child        |
+| `cloneNode()`          | Clone element       |
+
+---
+
+### 🔹 Element Position & Size
+
+| Property                  | Description        |
+| ------------------------- | ------------------ |
+| `clientWidth/Height`      | Size incl. padding |
+| `offsetWidth/Height`      | Size incl. border  |
+| `offsetTop/Left`          | Position offset    |
+| `getBoundingClientRect()` | Size & position    |
+
+---
+
+### 🔹 Scrolling
+
+| Property           | Description       |
+| ------------------ | ----------------- |
+| `scrollTop`        | Vertical scroll   |
+| `scrollLeft`       | Horizontal scroll |
+| `scrollHeight`     | Full height       |
+| `scrollWidth`      | Full width        |
+| `scrollIntoView()` | Scroll to element |
+
+---
+
+### 🔹 Events & Interaction
+
+| Method                  | Purpose        |
+| ----------------------- | -------------- |
+| `addEventListener()`    | Attach handler |
+| `removeEventListener()` | Remove handler |
+| `click()`               | Simulate click |
+| `focus()`               | Focus element  |
+| `blur()`                | Remove focus   |
+
+---
+
+### 🔹 Node Information
+
+| Property        | Description   |
+| --------------- | ------------- |
+| `nodeName`      | Node name     |
+| `nodeType`      | Node type     |
+| `nodeValue`     | Node value    |
+| `ownerDocument` | Root document |
+
+---
+
+## ⚠️ Deprecated (Avoid Using)
+
+* `anchors`, `applets`, `documentMode`
+* `execCommand()`
+* `normalizeDocument()`
+* `isSupported()`
+
+---
+
+## 🧠 Usage Note
+
+Use this section as a **quick reference** when working with:
+
+* DOM traversal
+* Element creation
+* Attribute management
+* Layout measurements
+* Event handling
+
+---

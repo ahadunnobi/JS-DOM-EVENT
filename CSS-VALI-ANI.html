@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CSS, Validation & Animation Demo</title>
+
+<style>
+  #container {
+    width: 400px;
+    height: 200px;
+    position: relative;
+    background: yellow;
+    margin-top: 20px;
+  }
+
+  #animate {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    background: red;
+  }
+
+  input:invalid { border: 2px solid red; }
+  input:valid { border: 2px solid green; }
+</style>
+</head>
+<body>
+
+<h2 id="text">Hello World</h2>
+
+<button onclick="changeStyle()">Change CSS</button>
+<button onclick="toggleText()">Hide/Show</button>
+
+<hr>
+
+<form name="myForm" onsubmit="return validateForm()">
+  Name: <input type="text" name="fname" required>
+  Number (1–10): <input type="number" id="num" min="1" max="10" required>
+  <input type="submit" value="Submit">
+</form>
+
+<hr>
+
+<button onclick="startAnimation()">Start Animation</button>
+
+<div id="container">
+  <div id="animate"></div>
+</div>
+
+<script>
+// =====================
+// Changing CSS
+// =====================
+function changeStyle() {
+  const text = document.getElementById("text");
+  text.style.color = "blue";
+  text.style.backgroundColor = "lightgray";
+  text.style.fontSize = "30px";
+}
+
+// =====================
+// Show / Hide
+// =====================
+function toggleText() {
+  const text = document.getElementById("text");
+  text.style.visibility =
+    text.style.visibility === "hidden" ? "visible" : "hidden";
+}
+
+// =====================
+// Form Validation
+// =====================
+function validateForm() {
+  let name = document.forms["myForm"]["fname"].value;
+  let num = document.getElementById("num").value;
+
+  if (name === "") {
+    alert("Name must be filled out");
+    return false;
+  }
+
+  if (isNaN(num) || num < 1 || num > 10) {
+    alert("Enter a number between 1 and 10");
+    return false;
+  }
+
+  return true;
+}
+
+// =====================
+// DOM Animation
+// =====================
+function startAnimation() {
+  const elem = document.getElementById("animate");
+  let pos = 0;
+
+  const id = setInterval(frame, 5);
+
+  function frame() {
+    if (pos === 350) {
+      clearInterval(id);
+    } else {
+      pos++;
+      elem.style.top = pos + "px";
+      elem.style.left = pos + "px";
+    }
+  }
+}
+</script>
+
+</body>
+</html>
