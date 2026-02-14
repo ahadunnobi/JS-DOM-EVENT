@@ -179,3 +179,135 @@ document.write("Hello");
 * Avoid **document.write()**
 
 ---
+# DOM Styling, Validation & Animation (Compact)
+
+## 🎨 Changing CSS with JavaScript
+
+Use the `style` property to modify inline styles.
+
+```js
+document.getElementById(id).style.property = value;
+```
+
+### Common Properties
+
+* `color`
+* `backgroundColor`
+* `fontSize`
+* `visibility`
+* `display`
+* `position`, `top`, `left`
+
+### Example
+
+```js
+element.style.color = "blue";
+element.style.visibility = "hidden";
+```
+
+---
+
+## ⚡ Style Changes with Events
+
+Execute style changes when events occur.
+
+```js
+button.onclick = () => element.style.color = "red";
+```
+
+Common events:
+
+* `click`
+* `input`
+* `submit`
+* `load`
+
+---
+
+## 👁️ Show / Hide Elements
+
+```js
+element.style.visibility = "hidden"; // hide
+element.style.visibility = "visible"; // show
+
+element.style.display = "none"; // remove space
+element.style.display = "block";
+```
+
+---
+
+## 📝 JavaScript Form Validation
+
+Prevent form submission if input is invalid.
+
+```js
+function validateForm() {
+  let name = document.forms["myForm"]["fname"].value;
+  if (name === "") {
+    alert("Name required");
+    return false;
+  }
+}
+```
+
+### Numeric Validation
+
+```js
+let num = document.getElementById("num").value;
+if (isNaN(num) || num < 1 || num > 10) {
+  alert("Enter number 1–10");
+}
+```
+
+---
+
+## ✅ HTML5 Constraint Validation
+
+### Attributes
+
+* `required`
+* `min`, `max`
+* `pattern`
+* `type`
+
+### CSS Pseudo-classes
+
+* `:valid`
+* `:invalid`
+* `:required`
+* `:optional`
+
+---
+
+## 🎞️ DOM Animation (JavaScript)
+
+Animation = gradual style change using `setInterval`.
+
+```js
+let id = setInterval(frame, 5);
+
+function frame() {
+  if (pos == 350) clearInterval(id);
+  else {
+    pos++;
+    elem.style.left = pos + "px";
+    elem.style.top = pos + "px";
+  }
+}
+```
+
+### Requirements
+
+* Container → `position: relative`
+* Animated element → `position: absolute`
+
+---
+
+## 🧠 Quick Tips
+
+* Use `visibility` to hide but keep space.
+* Use `display: none` to remove layout space.
+* Always `clearInterval()` to stop animation.
+* Combine HTML5 validation + JS for best results.
+
+---
